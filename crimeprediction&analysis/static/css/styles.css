@@ -1,0 +1,122 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #1e3c72, #2a5298); /* Smooth gradient */
+    height: 100vh;
+    color: #f7f7f7;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hero Section */
+.hero-section {
+    background: #4caf50; /* Green color for hero section */
+    color: white;
+    padding: 80px 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+}
+
+.hero-section h1 {
+    font-size: 4rem; /* Larger, bolder text */
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+/* Options Container */
+.options-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 280px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.card p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #388e3c;
+    transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #4caf50;
+    color: white;
+    padding: 18px;
+    margin-top: 40px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
