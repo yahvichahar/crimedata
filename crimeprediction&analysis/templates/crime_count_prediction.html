@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Count Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/crime_style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1>Crime Count Prediction</h1>
+            <p>Predict crime counts for any given year and compare them with actual data to analyze trends.</p>
+        </div>
+
+        <div class="form-container">
+            <form method="POST" action="/crime_count_prediction">
+                <label for="year">Enter Year: </label>
+                <input type="text" id="year" name="year" placeholder="Enter Year (e.g., 2024)" required>
+                <input type="submit" value="Predict" class="btn-submit">
+            </form>
+        </div>
+
+        {% if actual_crime_count is not none %}
+            <div class="result-box">
+                <h2>Actual Crime Count for {{ year }}: {{ actual_crime_count }}</h2>
+            </div>
+        {% elif prediction %}
+            <div class="result-box">
+                <h2>Predicted Crime Count for {{ year }}: {{ prediction }}</h2>
+            </div>
+        {% endif %}
+
+        {% if error_message %}
+            <div class="error-message">
+                <h2>{{ error_message }}</h2>
+            </div>
+        {% endif %}
+
+        <a href="/" class="btn-back">Back to Home</a>
+    </div>
+</body>
+</html>

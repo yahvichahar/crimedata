@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Analysis and Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="hero-section">
+        <h1>Crime Analysis and Prediction Dashboard</h1>
+        <p>Welcome to the Crime Analysis and Prediction Dashboard. Please choose an option below to get started:</p>
+    </div>
+
+    <div class="options-container">
+        <div class="card">
+            <h3>Crime Count Prediction</h3>
+            <p>Use time series forecasting to predict future crime rates.</p>
+            <a href="{{ url_for('crime_count_prediction') }}" class="btn">Go to Prediction</a>
+        </div>
+        <div class="card">
+            <h3>Crime Rate by Gender</h3>
+            <p>Analyze crime rates based on gender distribution.</p>
+            <a href="{{ url_for('crime_rate_by_gender') }}" class="btn">View Gender Data</a>
+        </div>
+        <div class="card">
+            <h3>Crime Classification</h3>
+            <p>Classify crimes based on severity: Severe, Moderate, Minor.</p>
+            <a href="{{ url_for('crime_classification') }}" class="btn">Explore Crime Classification</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Crime Analysis and Prediction. All rights reserved.</p>
+    </footer>
+</body>
+</html>

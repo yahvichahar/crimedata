@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Rate by Gender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            text-decoration: none;
+            color: white;
+            background-color: blue;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Crime Rate by Gender</h1>
+
+    <form method="POST">
+        <label>Select Gender:</label><br>
+        <input type="checkbox" name="gender" value="Male"> Male
+        <input type="checkbox" name="gender" value="Female"> Female
+        <input type="checkbox" name="gender" value="Others"> Others
+        <br><br>
+
+        <label>Select Year(s):</label><br>
+        <input type="checkbox" name="year" value="2020"> 2020
+        <input type="checkbox" name="year" value="2021"> 2021
+        <input type="checkbox" name="year" value="2022"> 2022
+        <input type="checkbox" name="year" value="2023"> 2023
+        <input type="checkbox" name="year" value="2024"> 2024
+        <br><br>
+
+        <button type="submit">Get Crime Data</button>
+    </form>
+
+    {% if victim_gender_dict %}
+    <h2>Crime Count Data</h2>
+    <table>
+        <tr>
+            <th>Year</th>
+            <th>Male</th>
+            <th>Female</th>
+            <th>Others</th>
+        </tr>
+        {% for year, gender_data in victim_gender_dict.items() %}
+        <tr>
+            <td>{{ year }}</td>
+            <td>{{ gender_data.get('Male', 0) }}</td>
+            <td>{{ gender_data.get('Female', 0) }}</td>
+            <td>{{ gender_data.get('Others', 0) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% set total_crimes = 0 %}
+    {% for year, gender_data in victim_gender_dict.items() %}
+        {% set total_crimes = total_crimes + gender_data.get('Male', 0) + gender_data.get('Female', 0) + gender_data.get('Others', 0) %}
+    {% endfor %}
+    
+    {% if total_crimes > 0 %}
+        <h3>Total Crimes by Gender: {{ total_crimes }}</h3>
+    {% endif %}
+    {% else %}
+    <p>No data available for the selected filters.</p>
+    {% endif %}
+
+    <a href="/" class="btn">Back to Home</a>
+
+</body>
+</html>

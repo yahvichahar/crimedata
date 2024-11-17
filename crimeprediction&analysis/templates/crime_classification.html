@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Classification</title>
+</head>
+<body>
+    <h1>Crime Classification - Severity Records</h1>
+
+    <h3>Total Records: {{ total_records }}</h3>
+
+    <!-- Form to filter data -->
+    <form method="POST">
+        <!-- Select Severity -->
+        <label>Select Severity:</label><br>
+        <input type="checkbox" name="severity" value="Severe" {% if 'Severe' in selected_severity %}checked{% endif %}> Severe<br>
+        <input type="checkbox" name="severity" value="Moderate" {% if 'Moderate' in selected_severity %}checked{% endif %}> Moderate<br>
+        <input type="checkbox" name="severity" value="Minor" {% if 'Minor' in selected_severity %}checked{% endif %}> Minor<br>
+        <br>
+
+        <!-- Number of Results -->
+        <label for="num_records">Number of Results:</label>
+        <input type="number" name="num_results" id="num_records" min="1" placeholder="Enter number of results or leave blank for all" value="{{ num_results }}">
+        <br><br>
+
+        <button type="submit">Filter</button>
+    </form>
+
+    <h3>Filtered Data:</h3>
+    {% if filtered_data is not none and filtered_data|length > 0 %}
+        <ul>
+            {% for index, row in filtered_data.iterrows() %}
+                <li>
+                    <strong>Record {{ loop.index }}:</strong><br>
+                    <strong>Severity:</strong> {{ row['severity_label'] }}<br>
+                    <strong>Crime Code:</strong> {{ row['Crime Code'] }}<br>
+                    <strong>Crime Description:</strong> {{ row['Crime Description'] }}<br>
+                    <strong>Date of Occurrence:</strong> {{ row['Date of Occurrence'] }}<br><br>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No records match the selected criteria.</p>
+    {% endif %}
+</body>
+</html>
